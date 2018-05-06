@@ -1,0 +1,32 @@
+{
+  "name": "teamcity-helper-web-extension",
+  "version": "0.1.0",
+  "description": "teamcity-helper is a web extension which adds some additional functionality to the TeamCity UI",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js"
+  },
+  "author": {
+    "name": "Mikhail Kumachev",
+    "email": "mikhail.kumachev@gmail.com"
+  },
+  "keywords": [
+    "TeamCity",
+    "Web Extension",
+    "Chrome Extension"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "0.0.65",
+    "@types/webpack": "^4.1.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "ts-loader": "^4.2.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-merge": "^4.1.2"
+  }
+}
