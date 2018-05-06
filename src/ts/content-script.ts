@@ -3,11 +3,11 @@ document.querySelectorAll("a[href]").forEach(element => {
   element.classList.add("colorify");
 });
 
-const style = document.createElement("style");
+const style: HTMLStyleElement = document.createElement("style");
 style.innerText = `
   .colorify {
     color: black!important;
-    background-color: orange!important;
+    background-color: green!important;
   }
 `;
 
