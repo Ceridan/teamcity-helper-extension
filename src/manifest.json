@@ -3,10 +3,21 @@
   "name": "TeamCity Helper",
   "description": "TeamCity Helper is a web extension which adds some additional functionality to the TeamCity UI",
   "version": "0.1.0",
-  "content_scripts": [
-    {
-        "matches": ["http://*/*", "https://*/*"],
-        "js": ["js/content-script.js"]
-    }
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["js/content-script.js"]
+  }],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
   ]
 }

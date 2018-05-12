@@ -1,28 +1,34 @@
 import { TeamCity } from "../interfaces/teamcity";
+import { Config } from "../interfaces/config";
 import { TeamCityService } from "../services/teamcity-service";
 
 export class TriggerPageHandler {
   static isValidTriggersPage(): boolean {
-    return (document.URL.indexOf("editTriggers.html") > 0) && (document.getElementById("buildTriggersTable") !== null);
+    return (document.URL.indexOf("editTriggers.html") > -1) && (document.getElementById("buildTriggersTable") !== null);
   }
 
   private teamCity: TeamCity;
-  private triggersTable: HTMLTableElement;
 
-  constructor();
-  constructor(teamCity?: TeamCity) {
-    this.teamCity = teamCity || new TeamCityService("TEAMCITY_REST_API_URL", "REST_API_LOGIN", "REST_API_PASSWORD");
-    this.triggersTable = <HTMLTableElement>document.getElementById("buildTriggersTable");
+  constructor(teamCity: TeamCity) {
+    this.teamCity = teamCity;
+
+    chrome.runtime.onMessage.addListener((message, sender) => {
+      const config = <Config>message;
+      this.teamCity.setTeamCityRestApiCredentials(config.teamCityRestApiLogin, config.teamCityRestApiPassword);
+    });
   }
 
   generateCopyLinks(): void {
-    if (this.triggersTable === null) {
-      throw new Error("Triggers table was not found on the page");
+    const triggersTable = <HTMLTableElement>document.getElementById("buildTriggersTable");
+
+    if (triggersTable === null) {
+      console.error("Triggers table was not found on the page");
+      return;
     }
 
     const buildTypeId = this.getBuildTypeId();
 
-    this.triggersTable.querySelectorAll("tr > td.highlight.edit").forEach(cell => {
+    triggersTable.querySelectorAll("tr > td.highlight.edit").forEach(cell => {
       const triggerId = this.getTriggerIdFromRow(cell.parentElement);
 
       cell.removeAttribute("onclick");
@@ -38,13 +44,7 @@ export class TriggerPageHandler {
       copyLink.href = "#";
       copyLink.addEventListener("click", (event) => {
         event.stopPropagation();
-
-        this.teamCity.getTrigger(triggerId, buildTypeId)
-          .then(trigger => this.teamCity.addTrigger(trigger, buildTypeId))
-          .then(() => location.reload())
-          .catch(error => {
-            throw new Error(error);
-          });
+        this.copyTriggerRequest(triggerId, buildTypeId);
       });
 
       newCell.appendChild(br);
@@ -52,11 +52,26 @@ export class TriggerPageHandler {
     });
   }
 
+  private copyTriggerRequest(triggerId: string, buildTypeId: string): void {
+    this.teamCity.getTrigger(triggerId, buildTypeId)
+    .then(trigger => this.teamCity.addTrigger(trigger, buildTypeId))
+    .then(() => location.reload())
+    .catch(statusCode =>  {
+      if (statusCode === 401) {
+        console.error(`Request returns the error. Status code: ${statusCode}. You have to enter REST API authorization data on the extension options page.`);
+        chrome.runtime.sendMessage({ action: "authorization" });
+      } else {
+        console.error(`Request returns the error. Status code: ${statusCode}`);
+      }
+    });
+  }
+
   private getBuildTypeId(): string {
     const title = document.querySelector("#restPageTitle > div[data-buildtypeid]");
 
     if (!title) {
-      throw new Error("Couldn't find build title on the page");
+     console.error("Couldn't find build title on the page");
+     return;
     }
 
     return title.getAttribute("data-buildtypeid");
