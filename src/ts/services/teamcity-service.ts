@@ -10,11 +10,11 @@ export class TeamCityService implements TeamCity {
   constructor(teamCityUrl: string, apiLogin: string, apiPassword: string) {
     this.setTeamCityUrl(teamCityUrl);
     this.setTeamCityRestApiCredentials(apiLogin, apiPassword);
-    this.teamCityRestApiUrl = `${this.teamCityUrl.origin}/app/rest`;
   }
 
   setTeamCityUrl(teamCityUrl: string): void {
     this.teamCityUrl = new URL(teamCityUrl);
+    this.teamCityRestApiUrl = `${this.teamCityUrl.origin}/app/rest`;
   }
 
   setTeamCityRestApiCredentials(apiLogin: string, apiPassword: string): void {
