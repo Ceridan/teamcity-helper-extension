@@ -17,7 +17,7 @@
   },
   "permissions": [
     "activeTab",
-    "tabs",
-    "storage"
+    "storage",
+    "downloads"
   ]
 }

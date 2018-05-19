@@ -3,7 +3,7 @@ import { Config } from "../interfaces/config";
 import { TeamCityService } from "../services/teamcity-service";
 
 export class TriggerPageHandler {
-  static isValidTriggersPage(): boolean {
+  static isValidTriggerPage(): boolean {
     return (document.URL.indexOf("editTriggers.html") > -1) && (document.getElementById("buildTriggersTable") !== null);
   }
 
