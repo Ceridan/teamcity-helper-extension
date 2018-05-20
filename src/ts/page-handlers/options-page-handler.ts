@@ -19,24 +19,44 @@ export class OptionsPageHandler {
     });
 
     document.getElementById("save-options").addEventListener("click" , () => {
-      const storageObject = {};
-
-      this.optionInputElementIds.forEach(key => {
-        storageObject[key] = (<HTMLInputElement>optionInputElements[key]).value;
-      });
-
-      this.storage.setData(storageObject)
-        .then(() => chrome.runtime.sendMessage({ action: "options", data: storageObject }))
-        .then(() => window.close())
-        .catch(error => console.error(error));
+      this.saveOptions(optionInputElements);
     });
 
+    this.getOptions(optionInputElements);
+  }
+
+  private getOptions(optionInputElements: object): void {
     this.storage.getData(this.optionInputElementIds)
       .then(items => {
         this.optionInputElementIds.forEach(key => {
-          (<HTMLInputElement>optionInputElements[key]).value = items[key] || "";
+          const inputElement = <HTMLInputElement>optionInputElements[key];
+
+          if (inputElement.type === "checkbox") {
+            inputElement.checked = typeof items[key] !== "undefined" ? items[key] : true;
+          } else {
+            inputElement.value = items[key] || "";
+          }
         });
       })
+      .catch(error => console.error(error));
+  }
+
+  private saveOptions(optionInputElements: object): void {
+    const storageObject = {};
+
+    this.optionInputElementIds.forEach(key => {
+      const inputElement = <HTMLInputElement>optionInputElements[key];
+
+      if (inputElement.type === "checkbox") {
+        storageObject[key] = inputElement.checked || false;
+      } else {
+        storageObject[key] = inputElement.value;
+      }
+    });
+
+    this.storage.setData(storageObject)
+      .then(() => chrome.runtime.sendMessage({ action: "options", data: storageObject }))
+      .then(() => window.close())
       .catch(error => console.error(error));
   }
 }

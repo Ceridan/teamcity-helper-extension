@@ -14,13 +14,20 @@ if (teamCityLogoElement !== null && teamCityFooterAnchorElement !== null
   if (TriggerPageHandler.isValidTriggerPage()) {
     AppConfig.getConfig()
       .then(config => {
-        const teamCityUrl = document.location.origin;
-        const teamCity = new TeamCityService(teamCityUrl, config.teamCityRestApiLogin, config.teamCityRestApiPassword);
-        const triggerPageHandler = new TriggerPageHandler(teamCity);
-        triggerPageHandler.generateCopyLinks();
+        if (config.isTriggerCopyFeatureEnabled) {
+          const teamCityUrl = document.location.origin;
+          const teamCity = new TeamCityService(teamCityUrl, config.teamCityRestApiLogin, config.teamCityRestApiPassword);
+          const triggerPageHandler = new TriggerPageHandler(teamCity);
+          triggerPageHandler.generateCopyLinks();
+        }
       });
   } else if (BuildOverviewPageHandler.isValidBuildOVerviewPage()) {
-    const buildOverviewPageHandler = new BuildOverviewPageHandler();
-    buildOverviewPageHandler.inlineScreenshotsToFailedTests();
+    AppConfig.getConfig()
+      .then(config => {
+        if (config.isInlineScreenshotFeatureEnabled) {
+          const buildOverviewPageHandler = new BuildOverviewPageHandler();
+          buildOverviewPageHandler.inlineScreenshotsToFailedTests();
+        }
+      });
   }
 }

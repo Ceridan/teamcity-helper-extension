@@ -7,15 +7,29 @@
 </head>
 <body>
   <div id="tc-options">
-    <h1>TeamCity REST API authorization</h1>
-    <div>
-      <label for="tc-rest-login">REST API login: </label>
-      <input type="text" id="tc-rest-login">
-    </div>
-    <div>
-      <label for="tc-rest-password">REST API password: </label>
-      <input type="password" id="tc-rest-password">
-    </div>
+    <section>
+      <h1>TeamCity REST API authorization</h1>
+      <div>
+        <label for="tc-rest-login">REST API login: </label>
+        <input type="text" id="tc-rest-login">
+      </div>
+      <div>
+        <label for="tc-rest-password">REST API password: </label>
+        <input type="password" id="tc-rest-password">
+      </div>
+    </section>
+    <section>
+      <h1>Feature toggle</h1>
+      <div>
+          <input type="checkbox" id="tc-feat-trigger-copy">
+          <label for="tc-feat-trigger-copy">Trigger copy function (REST API authorization required)</label>
+        </div>
+        <div>
+          <input type="checkbox" id="tc-feat-inline-screenshot">
+          <label for="tc-feat-inline-screenshot">Inline screenshots for failed tests</label>
+        </div>
+    </section>
+
   </div>
   <div>
     <button id="save-options">Save</button>
