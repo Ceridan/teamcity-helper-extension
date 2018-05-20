@@ -4,8 +4,8 @@
   "description": "teamcity-helper is a web extension which adds some additional functionality to the TeamCity UI",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --config=webpack/webpack.dev.js --watch",
-    "build": "webpack --config=webpack/webpack.prod.js",
+    "dev": "npm run test && webpack --config=webpack/webpack.dev.js --watch",
+    "build": "npm run test && webpack --config=webpack/webpack.prod.js",
     "test": "jasmine-ts --config=jasmine.json"
   },
   "author": {
