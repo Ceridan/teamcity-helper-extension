@@ -4,8 +4,9 @@
   "description": "teamcity-helper is a web extension which adds some additional functionality to the TeamCity UI",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --config webpack/webpack.dev.js --watch",
-    "build": "webpack --config webpack/webpack.prod.js"
+    "dev": "webpack --config=webpack/webpack.dev.js --watch",
+    "build": "webpack --config=webpack/webpack.prod.js",
+    "test": "jasmine-ts --config=jasmine.json"
   },
   "author": {
     "name": "Mikhail Kumachev",
@@ -19,10 +20,13 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "0.0.65",
+    "@types/jasmine": "^2.8.7",
     "@types/webpack": "^4.1.4",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
     "html-webpack-plugin": "^3.2.0",
+    "jasmine": "^3.1.0",
+    "jasmine-ts": "^0.2.1",
     "ts-loader": "^4.2.0",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",

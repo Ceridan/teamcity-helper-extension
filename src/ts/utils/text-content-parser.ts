@@ -4,10 +4,15 @@ export class TextContentParser {
       return null;
     }
 
-    const re = /##teamcity\[publishArtifacts\s*('|")(.+(\\|\/))*((.+)=>(.+)('|")|(.+))\]/;
+    const re = /##teamcity\[publishArtifacts\s*('|")(.+(\\|\/))*(((.+)=>(.+))|(.+))('|")\]/;
     const reMatchResult = re.exec(stackTrace);
-    const path = reMatchResult.length > 8 ? (reMatchResult[5] || reMatchResult[8]).trim() : "";
-    const publishPath = reMatchResult.length > 8 ? (reMatchResult[6] || "").trim() : "";
+
+    if (!reMatchResult) {
+      return null;
+    }
+
+    const path = reMatchResult.length > 9 ? (reMatchResult[6] || reMatchResult[8]).trim() : "";
+    const publishPath = reMatchResult.length > 9 ? (reMatchResult[7] || "").trim() : "";
     const replacedPath = TextContentParser.replaceHexInPath(path);
 
     return { path: replacedPath, publishPath: publishPath };
