@@ -43,5 +43,5 @@ Actually it uses TeamCity REST API under the hood. REST API allows you to get tr
 
 TeamCity Helper Extension supports feature toggling, so you may disable some features and use only those you like. To enable/disable features you need to open extension options page and check/uncheck features. All features are enabled by default.
 
-# Special thanks
-Team of [Dodo Pizza](http://dodofranchise.com). The idea of this project was born while spending hours with TeamCity in Dodo and I have felt all the pains of the TeamCity UI by myself. I am very proud to be a part of such a great company. Guys you are amazing!!!
+# Special thanks to
+[Dodo Pizza](http://dodofranchise.com) team. The idea of this project was born while spending hours with TeamCity in Dodo and I have felt all the pains of the TeamCity UI by myself. I am very proud to be a part of such a great company. Guys you are amazing!!!
