@@ -27,7 +27,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "src/css/*.css", to: "css/[name].css" }
+      { from: "src/css/*.css", to: "css/[name].css" },
+      { from: "src/img/", to: "img", ignore: ["*.svg"] }
     ]),
     new HtmlWebpackPlugin({
       filename: "options.html",
