@@ -84,6 +84,8 @@ TestContext.WriteLine($"##teamcity[publishArtifacts '{screenshotFullPath} => scr
 
 Unfortunatly the triggers table doesn't allow to copy triggers and when you need to add a bunch of triggers with the same parameters (for example, to run  builds on schedule) you should create and fill trigger card every time. Trigger copy feature allows you to simplify this procedure and create full copy of the selected trigger and add it to the end of the triggers table.
 
+![Trigger copy function in action](/screenshots/tchelper-trigger-copy-feature.png)
+
 ### How does it work?
 Actually it uses TeamCity REST API under the hood. REST API allows you to get trigger info and to add new trigger. Combining this two methods we can read information about selected trigger and add it as a new trigger.
 
@@ -92,6 +94,7 @@ Actually it uses TeamCity REST API under the hood. REST API allows you to get tr
 
 TeamCity Helper Extension supports feature toggling, so you may disable some features and use only those you like. To enable/disable features you need to open extension options page and check/uncheck features. All features are enabled by default.
 
+![Extension options](/screenshots/tc-options.png)
 
 # Special thanks to
 [Dodo Pizza](http://dodofranchise.com) team. The idea of this project was born while spending hours with TeamCity in Dodo and I have felt all the pains of the TeamCity UI by myself. I am very proud to be a part of such a great company. Guys you are amazing!
