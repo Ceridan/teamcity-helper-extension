@@ -36,11 +36,9 @@ export class BuildOverviewPageHandler {
       });
     });
 
-    const testListElement = document.querySelector("table.testList");
-
-    if (testListElement) {
+    document.querySelectorAll("table.testList").forEach(testListElement => {
       observer.observe(testListElement, observerConfig);
-    }
+    });
   }
 
   private inlineScreenshot(stackTraceNode: Node): void {
