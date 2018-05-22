@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "TeamCity Helper",
   "description": "TeamCity Helper is a web extension which adds some additional functionality to the TeamCity UI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icons": {
     "16": "img/tchelper_logo_16.png",
     "32": "img/tchelper_logo_32.png",
@@ -23,7 +23,6 @@
   },
   "permissions": [
     "activeTab",
-    "storage",
-    "downloads"
+    "storage"
   ]
 }
