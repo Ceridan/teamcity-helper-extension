@@ -1,5 +1,6 @@
-## [0.1.0] - 2018-05-05
-**Project MVP**
-
+## [1.0.0] - 2018-05-22
 ### Added
-- Extension skeleton
+- Project is now on the GitHub
+- Version 1.0.0 provides following features to improve TeamCity UI:
+  - Trigger copy function
+  - Inline screenshots
