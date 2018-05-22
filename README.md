@@ -2,6 +2,8 @@
 
 **TeamCity Helper Extension** is a chrome extension which adds some additional functionality to the [TeamCity](https://www.jetbrains.com/teamcity/) UI.
 
+You may install TeamCity Helper Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/teamcity-helper/jngfchollnejmhmaeobpmijfkildpkag)
+
 ### What problem does it solve?
 When you use TeamCity on the everyday basis you face lacking features in the TeamCity UI. For example, when you work with triggers you often need possibility to copy triggers, but you TeamCity doesn't provide this function. It is not critical, but it takes some time to create new trigger and fill it's card. Another example, when you analyze failed UI tests on the build overview tab, it would be probably better if your screenshots are shown following by the stacktrace, rather than as separate artifacts. TeamCity Helper Extension is designed to cover such of this problems.
 
