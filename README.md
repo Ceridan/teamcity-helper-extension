@@ -8,6 +8,55 @@ When you use TeamCity on the everyday basis you face lacking features in the Tea
 > ## CAUTION
 > TeamCity Helper Extension is using [TeamCity REST API](https://confluence.jetbrains.com/display/TCD10/REST+API) to add some features to the TeamCity UI. To use such features you should provide credentials to access REST API. Generally it is not very good idea to give the access to your TeamCity REST API to the external applications, because it could harm your TeamCity builds. So, do it with caution. You also may validate the source code of the TeamCity Helper Extension on GitHub and build your own copy of the extension. TeamCityHelper Extension stores you REST API key using [Chrome Storage API](https://developer.chrome.com/extensions/storage) locally on your machine and uses it only for the TeamCity REST API requests.
 
+
+# How to build project
+
+## Prerequisites
+* [Google Chrome](https://www.google.com/chrome/) browser
+* [Node.js](https://nodejs.org/en/) installed on your machine
+
+## Set Up
+1. Clone the repository
+```
+$ git clone https://github.com/ceridan/teamcity-helper-extension.git
+$ cd teamicty-helper-extension
+``` 
+
+2. Restore packages
+```
+$ npm install
+```
+
+## Build project
+Now you have two options how to build project
+1. Build in production mode (size of the bundle will be as small as possible)
+```
+$ npm run build
+```
+
+2. Build in development mode (with source map and watcher which allows you to change code on the fly without manual rebuild and debug in browser)
+```
+$ npm run dev
+```
+
+In both cases build will create `dist` folder with all artifacts required for the extenson.
+
+Also you may run tests only
+```
+$ npm run test
+```
+
+## Upload your extension to the browser
+Now you are ready to upload your extension to the browser
+1. Open [Chrome Extensions](chrome://extensions/) page in your browser
+2. Toggle Developer Mode switch in the top right corner
+3. Choose `LOAD UNPACKED` option
+4. Browse for `dist` folder builded in the previous step and choose it
+
+
+> If you want to modify source code of the extension you need to refresh the extension on the Chrome Extensions page on each code changes.
+
+
 # Supported features
 
 * [Inline screenshots for failed tests](#Inline-screenshots-for-failed-tests)
@@ -43,5 +92,6 @@ Actually it uses TeamCity REST API under the hood. REST API allows you to get tr
 
 TeamCity Helper Extension supports feature toggling, so you may disable some features and use only those you like. To enable/disable features you need to open extension options page and check/uncheck features. All features are enabled by default.
 
+
 # Special thanks to
-[Dodo Pizza](http://dodofranchise.com) team. The idea of this project was born while spending hours with TeamCity in Dodo and I have felt all the pains of the TeamCity UI by myself. I am very proud to be a part of such a great company. Guys you are amazing!!!
+[Dodo Pizza](http://dodofranchise.com) team. The idea of this project was born while spending hours with TeamCity in Dodo and I have felt all the pains of the TeamCity UI by myself. I am very proud to be a part of such a great company. Guys you are amazing!
