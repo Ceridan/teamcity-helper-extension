@@ -49,9 +49,10 @@ export class BuildOverviewPageHandler {
     }
 
     const screenshotImageElement = document.createElement("img");
+    screenshotImageElement.setAttribute("style", "display: block; margin: 10px 0 10px 0;");
     screenshotImageElement.src = this.createArtifactImagePath(artifact.path, artifact.publishPath);
 
-    const stackTraceElement = stackTraceNode.parentElement;
+    const stackTraceElement = stackTraceNode.parentElement.querySelector("pre");
     stackTraceElement.parentElement.appendChild(screenshotImageElement);
   }
 
