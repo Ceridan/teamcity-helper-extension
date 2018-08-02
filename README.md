@@ -4,12 +4,16 @@
 
 You may install TeamCity Helper Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/teamcity-helper/jngfchollnejmhmaeobpmijfkildpkag)
 
-### What problem does it solve?
+## What problem does it solve?
 When you use TeamCity on the everyday basis you face lacking features in the TeamCity UI. For example, when you work with triggers you often need possibility to copy triggers, but you TeamCity doesn't provide this function. It is not critical, but it takes some time to create new trigger and fill it's card. Another example, when you analyze failed UI tests on the build overview tab, it would be probably better if your screenshots are shown following by the stacktrace, rather than as separate artifacts. TeamCity Helper Extension is designed to cover such of this problems.
 
 > ## CAUTION
 > TeamCity Helper Extension is using [TeamCity REST API](https://confluence.jetbrains.com/display/TCD10/REST+API) to add some features to the TeamCity UI. To use such features you should provide credentials to access REST API. Generally it is not very good idea to give the access to your TeamCity REST API to the external applications, because it could harm your TeamCity builds. So, do it with caution. You also may validate the source code of the TeamCity Helper Extension on GitHub and build your own copy of the extension. TeamCityHelper Extension stores you REST API key using [Chrome Storage API](https://developer.chrome.com/extensions/storage) locally on your machine and uses it only for the TeamCity REST API requests.
 
+## Teamcity version compatibility
+
+* [master](https://github.com/Ceridan/teamcity-helper-extension/tree/master) branch contains latest version of the code and currently targeted to TeamCity 2018.1
+* [teamcity-2017.2](https://github.com/Ceridan/teamcity-helper-extension/tree/teamcity-2017.2) branch targeted to TeamCity 2017.2 and no longer supported
 
 # How to build project
 
@@ -22,7 +26,7 @@ When you use TeamCity on the everyday basis you face lacking features in the Tea
 ```
 $ git clone https://github.com/ceridan/teamcity-helper-extension.git
 $ cd teamicty-helper-extension
-``` 
+```
 
 2. Restore packages
 ```

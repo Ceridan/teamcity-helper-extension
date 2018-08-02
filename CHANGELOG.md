@@ -1,3 +1,9 @@
+# Changelog
+
+## [1.1.0] - 2018-08-02
+### Fixed
+- Update extension functionality to support TeamCity 2018.1
+
 ## [1.0.1] - 2018-05-23
 ### Fixed
 - Remove downloads permission from manifest.json

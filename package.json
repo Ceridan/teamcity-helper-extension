@@ -1,6 +1,6 @@
 {
   "name": "teamcity-helper-extension",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "teamcity-helper is a web extension which adds some additional functionality to the TeamCity UI",
   "main": "index.js",
   "scripts": {
