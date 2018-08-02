@@ -28,11 +28,10 @@ export class TriggerPageHandler {
 
     const buildTypeId = this.getBuildTypeId();
 
-    triggersTable.querySelectorAll("tr > td.highlight.edit").forEach(cell => {
+    triggersTable.querySelectorAll("tr > td.highlight.edit[onclick]").forEach(cell => {
       const triggerId = this.getTriggerIdFromRow(cell.parentElement);
 
       cell.removeAttribute("onclick");
-      cell.classList.remove("highlight");
 
       // We have to replace the td element with copy to remove external anonymous click events
       const newCell = cell.cloneNode(true);
