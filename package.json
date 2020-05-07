@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run test && webpack --config=webpack/webpack.dev.js --watch",
     "build": "npm run test && webpack --config=webpack/webpack.prod.js",
-    "test": "jasmine-ts --config=jasmine.json"
+    "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json"
   },
   "author": {
     "name": "Mikhail Kumachev",
@@ -20,19 +20,18 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "^0.0.75",
-    "@types/jasmine": "^3.3.1",
-    "@types/webpack": "^4.4.21",
-    "clean-webpack-plugin": "^1.0.0",
+    "@types/jasmine": "^3.5.10",
+    "@types/webpack": "^4.41.12",
+    "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^5.1.1",
     "html-webpack-plugin": "^3.2.0",
-    "jasmine": "^3.3.1",
-    "jasmine-ts": "^0.3.0",
-    "ts-loader": "^5.3.1",
+    "jasmine": "^3.5.0",
+    "ts-loader": "^5.4.5",
     "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.2.2",
-    "webpack": "^4.27.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-merge": "^4.1.5"
+    "webpack-merge": "^4.2.2"
   }
 }
